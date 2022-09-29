@@ -1,10 +1,18 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-export const Checkbox: React.FC<{title: string}> = (props) => {
+interface Props {
+    title: string;
+    onPress: () => void;
+}
+
+// TODO: 테스트 갖춘 후, 화살표함수 안쓰도록 변경해보기
+export const Checkbox = (props: Props) => {
     return (
         <View>
-            <Text>{props.title}</Text>
+            <TouchableOpacity onPress={props.onPress}>
+                <Text>{props.title}</Text>
+            </TouchableOpacity>
         </View>
     );
 }
