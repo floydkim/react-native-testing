@@ -29,5 +29,5 @@ it('? 1) 체크박스를 누르면 onPress 핸들러 호출', () => {
     const TITLE = 'test';
     render(<Checkbox title={'test'} onPress={handler} />);
     fireEvent.press(screen.getByText(TITLE));
-    expect(handler).toHaveBeenCalled();
+    expect(handler).toHaveBeenCalledTimes(1);
 })
