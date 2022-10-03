@@ -6,8 +6,7 @@ interface Props {
     onPress: () => void;
 }
 
-// TODO: 테스트 갖춘 후, 화살표함수 안쓰도록 변경해보기
-export const Checkbox = (props: Props) => {
+export function Checkbox (props: Props) {
     return (
         <View>
             <TouchableOpacity onPress={props.onPress}>
