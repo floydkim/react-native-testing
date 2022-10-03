@@ -20,7 +20,8 @@ function noop() {}
 it('전달받은 문구를 표현합니다.', () => {
   const TITLE = '하하하'
   const instance = render(<Checkbox title={TITLE} onPress={noop} />)
-  expect(instance.getByText(TITLE).props.children).toBe(TITLE)
+  const Text = instance.getByText(TITLE)
+  expect(Text.props.children).toBe(TITLE)
 })
 
 it('? 1) 체크박스를 누르면 onPress 핸들러 호출', () => {
