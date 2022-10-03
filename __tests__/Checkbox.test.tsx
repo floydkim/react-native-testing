@@ -1,9 +1,8 @@
 import 'react-native'
 import React from 'react'
 import {render} from '../src/test/test-utils'
-import {ReactTestInstance} from 'react-test-renderer'
-import { cleanup, fireEvent, screen } from '@testing-library/react-native';
-import { Checkbox } from '../src/components/Checkbox';
+import {cleanup, fireEvent, screen} from '@testing-library/react-native'
+import {Checkbox} from '../src/components/Checkbox'
 
 afterEach(cleanup)
 
@@ -19,15 +18,15 @@ afterEach(cleanup)
 function noop() {}
 
 it('전달받은 문구를 표현합니다.', () => {
-    const TITLE = '하하하';
-    const instance = render(<Checkbox title={TITLE} onPress={noop} />);
-    expect(instance.getByText(TITLE).props.children).toBe(TITLE);
+  const TITLE = '하하하'
+  const instance = render(<Checkbox title={TITLE} onPress={noop} />)
+  expect(instance.getByText(TITLE).props.children).toBe(TITLE)
 })
 
 it('? 1) 체크박스를 누르면 onPress 핸들러 호출', () => {
-    const handler = jest.fn();
-    const TITLE = 'test';
-    render(<Checkbox title={'test'} onPress={handler} />);
-    fireEvent.press(screen.getByText(TITLE));
-    expect(handler).toHaveBeenCalledTimes(1);
+  const handler = jest.fn()
+  const TITLE = 'test'
+  render(<Checkbox title={'test'} onPress={handler} />)
+  fireEvent.press(screen.getByText(TITLE))
+  expect(handler).toHaveBeenCalledTimes(1)
 })
