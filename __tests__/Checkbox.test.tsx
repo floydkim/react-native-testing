@@ -18,18 +18,10 @@ afterEach(cleanup)
 
 function noop() {}
 
-// FIXME: 잘못 된 테스트임
 it('전달받은 문구를 표현합니다.', () => {
     const TITLE = '하하하';
-    render(<Checkbox title={TITLE} onPress={noop} />)
-    // const {getByText} = screen
-    // const innerText = getByText(TITLE)
-    // const button = innerText.parent as ReactTestInstance
-    // expect(button.props.style).toEqual(undefined)
-    // expect(innerText.props.style).toMatchObject({color: 'black'})
-
-    expect(screen.getByText(TITLE)).toBeTruthy();
-    expect(screen.getByText(TITLE).props.title).toBe(TITLE);
+    const instance = render(<Checkbox title={TITLE} onPress={noop} />);
+    expect(instance.getByText(TITLE).props.children).toBe(TITLE);
 })
 
 it('? 1) 체크박스를 누르면 onPress 핸들러 호출', () => {
