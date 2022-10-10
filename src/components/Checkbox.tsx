@@ -4,13 +4,13 @@ import {View, Text, TouchableOpacity} from 'react-native'
 interface Props {
   title: string
   onPress: () => void
-  isChecked?: boolean
+  isChecked: boolean
 }
 
 export function Checkbox(props: Props) {
   return (
     <TouchableOpacity onPress={props.onPress} style={{flexDirection: 'row'}}>
-      {props.isChecked === true ? <CheckedIcon /> : <UncheckedIcon />}
+      {props.isChecked ? <CheckedIcon /> : <UncheckedIcon />}
       <View>
         <Text>{props.title}</Text>
       </View>

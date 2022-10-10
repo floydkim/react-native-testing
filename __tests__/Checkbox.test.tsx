@@ -18,7 +18,9 @@ function noop() {}
 
 it('전달받은 문구를 표현합니다.', () => {
   const TITLE = '하하하'
-  const instance = render(<Checkbox title={TITLE} onPress={noop} />)
+  const instance = render(
+    <Checkbox title={TITLE} onPress={noop} isChecked={true} />,
+  )
   const Text = instance.getByText(TITLE)
   expect(Text.props.children).toBe(TITLE)
 })
@@ -26,7 +28,7 @@ it('전달받은 문구를 표현합니다.', () => {
 it('체크박스를 누르면 onPress 핸들러 호출', () => {
   const handler = jest.fn()
   const TITLE = 'test'
-  render(<Checkbox title={'test'} onPress={handler} />)
+  render(<Checkbox title={'test'} onPress={handler} isChecked={true} />)
   fireEvent.press(screen.getByText(TITLE))
   expect(handler).toHaveBeenCalledTimes(1)
 })
