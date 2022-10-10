@@ -2,7 +2,7 @@ import 'react-native'
 import React from 'react'
 import {render} from '../src/test/test-utils'
 import {cleanup, fireEvent, screen} from '@testing-library/react-native'
-import {Checkbox} from '../src/components/Checkbox'
+import {Checkbox, CheckedIcon, UncheckedIcon} from '../src/components/Checkbox'
 
 afterEach(cleanup)
 
@@ -29,4 +29,16 @@ it('체크박스를 누르면 onPress 핸들러 호출', () => {
   render(<Checkbox title={'test'} onPress={handler} />)
   fireEvent.press(screen.getByText(TITLE))
   expect(handler).toHaveBeenCalledTimes(1)
+})
+
+it('체크 여부에 따라 적절한 아이콘이 표시되어야 합니다. (체크 됨)', () => {
+  render(<Checkbox title={'test'} onPress={noop} isChecked={true} />)
+  expect(screen.queryByTestId('checked-icon')).not.toBeNull() // 아이콘 컴포넌트의 testID를 알아야 한다는 단점..
+  expect(screen.UNSAFE_queryByType(CheckedIcon)).not.toBeNull() // 이게 좋아보이지만 권장하지 않는 API..
+})
+
+it('체크 여부에 따라 적절한 아이콘이 표시되어야 합니다. (체크 안됨)', () => {
+  render(<Checkbox title={'test'} onPress={noop} isChecked={false} />)
+  expect(screen.queryByTestId('unchecked-icon')).not.toBeNull() // 아이콘 컴포넌트의 testID를 알아야 한다는 단점..
+  expect(screen.UNSAFE_queryByType(UncheckedIcon)).not.toBeNull() // 이게 좋아보이지만 권장하지 않는 API..
 })
