@@ -36,7 +36,7 @@ export function CheckboxList<ListItem extends CheckboxListItem>(
             key={item.title}
             title={item.title}
             onPress={() => handlePress(item.id)}
-            isChecked={false}
+            isChecked={item.isChecked}
           />
         )
       })}

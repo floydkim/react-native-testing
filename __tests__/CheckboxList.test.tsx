@@ -37,5 +37,9 @@ xit('체크박스를 누르면 onPress 핸들러 호출', () => {
 })
 
 it('누른 체크박스의 체크상태가 토글되어야 함', () => {
-  // TODO
+  const LIST = [{id: 1, title: 'item1', isChecked: false}]
+  render(<CheckboxList list={LIST} />)
+  const listItem = screen.getByText(/item/i)
+  fireEvent.press(listItem)
+  expect(screen.queryByTestId('checked-icon')).not.toBeNull() // 아이콘 컴포넌트의 testID를 알아야 한다는 단점..
 })
